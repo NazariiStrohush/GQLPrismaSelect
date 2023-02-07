@@ -23,5 +23,8 @@
   "bugs": {
     "url": "https://github.com/NazariiStrohush/GQLPrismaSelect/issues"
   },
-  "homepage": "https://github.com/NazariiStrohush/GQLPrismaSelect#readme"
+  "homepage": "https://github.com/NazariiStrohush/GQLPrismaSelect#readme",
+  "devDependencies": {
+    "prettier": "^2.8.3"
+  }
 }
