@@ -1,0 +1,27 @@
+{
+  "name": "gql_prisma_select",
+  "version": "0.0.1",
+  "description": "Package to get selection according to gql query fields",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NazariiStrohush/GQLPrismaSelect.git"
+  },
+  "keywords": [
+    "gql",
+    "prisma",
+    "select",
+    "include",
+    "underfetching",
+    "overfetching"
+  ],
+  "author": "NazariiStrohush",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NazariiStrohush/GQLPrismaSelect/issues"
+  },
+  "homepage": "https://github.com/NazariiStrohush/GQLPrismaSelect#readme"
+}
