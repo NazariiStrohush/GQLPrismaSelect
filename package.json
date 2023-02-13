@@ -25,6 +25,10 @@
   },
   "homepage": "https://github.com/NazariiStrohush/GQLPrismaSelect#readme",
   "devDependencies": {
+    "@types/lodash": "^4.14.191",
     "prettier": "^2.8.3"
+  },
+  "dependencies": {
+    "graphql": "^16.6.0"
   }
 }
