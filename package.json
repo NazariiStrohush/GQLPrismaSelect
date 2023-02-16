@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/NazariiStrohush/GQLPrismaSelect.git"
+    "url": "git+https://github.com/NazariiStrohush/gql-prisma-select.git"
   },
   "keywords": [
     "gql",
@@ -22,9 +22,9 @@
   "author": "NazariiStrohush",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/NazariiStrohush/GQLPrismaSelect/issues"
+    "url": "https://github.com/NazariiStrohush/gql-prisma-select/issues"
   },
-  "homepage": "https://github.com/NazariiStrohush/GQLPrismaSelect#readme",
+  "homepage": "https://github.com/NazariiStrohush/gql-prisma-select#readme",
   "devDependencies": {
     "@types/lodash": "^4.14.191",
     "prettier": "^2.8.3"
