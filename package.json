@@ -26,7 +26,6 @@
   },
   "homepage": "https://github.com/NazariiStrohush/gql-prisma-select#readme",
   "devDependencies": {
-    "@types/lodash": "^4.14.191",
     "prettier": "^2.8.3"
   },
   "dependencies": {
