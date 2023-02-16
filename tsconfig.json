@@ -5,6 +5,8 @@
     "moduleResolution": "node",
     "declaration": true,
     "outDir": "dist",
+    "baseUrl": "./",
+    "lib": ["es2018"],
 //    "strict": true,
     "esModuleInterop": true
   },
