@@ -1,5 +1,5 @@
 {
-  "name": "gql-prisma-select",
+  "name": "@nazariistrohush/gql-prisma-select",
   "version": "0.0.2",
   "description": "Package to get selection according to gql query fields",
   "main": "dist/index.js",
