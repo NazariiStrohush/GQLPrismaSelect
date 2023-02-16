@@ -1,2 +1,2 @@
 export { DEFAULT_PATHS } from './types';
-export { GQLPrismaSelect } from './GQLPrismaSelect';
+export { GQLPrismaSelect } from './src/GQLPrismaSelect';
