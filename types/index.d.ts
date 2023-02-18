@@ -1,11 +1,22 @@
 import type { Request, Response } from 'apollo-server-env';
-import type { GraphQLSchema, ValidationContext, ASTVisitor, GraphQLFormattedError, OperationDefinitionNode, DocumentNode, GraphQLError, GraphQLResolveInfo, GraphQLCompositeType } from 'graphql';
+import type {
+  GraphQLSchema,
+  ValidationContext,
+  ASTVisitor,
+  GraphQLFormattedError,
+  OperationDefinitionNode,
+  DocumentNode,
+  GraphQLError,
+  GraphQLResolveInfo as GraphQLResolveInfoBase,
+  GraphQLCompositeType,
+} from 'graphql';
 import type { KeyValueCache } from 'apollo-server-caching';
 import type { Trace } from 'apollo-reporting-protobuf';
 
 export declare type BaseContext = Record<string, any>;
 export declare type ValueOrPromise<T> = T | Promise<T>;
-export declare type WithRequired<T, K extends keyof T> = T & Required<Pick<T, K>>;
+export declare type WithRequired<T, K extends keyof T> = T &
+  Required<Pick<T, K>>;
 export declare type AnyFunction = (...args: any[]) => any;
 export declare type AnyFunctionMap = {
   [key: string]: AnyFunction | undefined;
@@ -87,7 +98,9 @@ export interface GraphQLRequestContext<TContext = Record<string, any>> {
   readonly overallCachePolicy: CachePolicy;
 }
 export declare type ValidationRule = (context: ValidationContext) => ASTVisitor;
-export declare type GraphQLExecutor<TContext = Record<string, any>> = (requestContext: GraphQLRequestContextExecutionDidStart<TContext>) => Promise<GraphQLExecutionResult>;
+export declare type GraphQLExecutor<TContext = Record<string, any>> = (
+  requestContext: GraphQLRequestContextExecutionDidStart<TContext>
+) => Promise<GraphQLExecutionResult>;
 export declare type GraphQLExecutionResult = {
   data?: Record<string, any> | null;
   errors?: ReadonlyArray<GraphQLError>;
@@ -99,22 +112,50 @@ export declare type Logger = {
   warn(message?: any): void;
   error(message?: any): void;
 };
-export declare type GraphQLFieldResolverParams<TSource, TContext, TArgs = {
-  [argName: string]: any;
-}> = {
+export declare type GraphQLFieldResolverParams<
+  TSource,
+  TContext,
+  TArgs = {
+    [argName: string]: any;
+  }
+> = {
   source: TSource;
   args: TArgs;
   context: TContext;
   info: GraphQLResolveInfo;
 };
-export declare type GraphQLRequestContextDidResolveSource<TContext> = WithRequired<GraphQLRequestContext<TContext>, 'metrics' | 'source' | 'queryHash'>;
-export declare type GraphQLRequestContextParsingDidStart<TContext> = GraphQLRequestContextDidResolveSource<TContext>;
-export declare type GraphQLRequestContextValidationDidStart<TContext> = GraphQLRequestContextParsingDidStart<TContext> & WithRequired<GraphQLRequestContext<TContext>, 'document'>;
-export declare type GraphQLRequestContextDidResolveOperation<TContext> = GraphQLRequestContextValidationDidStart<TContext> & WithRequired<GraphQLRequestContext<TContext>, 'operation' | 'operationName'>;
-export declare type GraphQLRequestContextDidEncounterErrors<TContext> = WithRequired<GraphQLRequestContext<TContext>, 'metrics' | 'errors'>;
-export declare type GraphQLRequestContextResponseForOperation<TContext> = WithRequired<GraphQLRequestContext<TContext>, 'metrics' | 'source' | 'document' | 'operation' | 'operationName'>;
-export declare type GraphQLRequestContextExecutionDidStart<TContext> = GraphQLRequestContextParsingDidStart<TContext> & WithRequired<GraphQLRequestContext<TContext>, 'document' | 'operation' | 'operationName'>;
-export declare type GraphQLRequestContextWillSendResponse<TContext> = GraphQLRequestContextDidResolveSource<TContext> & WithRequired<GraphQLRequestContext<TContext>, 'metrics' | 'response'>;
+export declare type GraphQLRequestContextDidResolveSource<TContext> =
+  WithRequired<
+    GraphQLRequestContext<TContext>,
+    'metrics' | 'source' | 'queryHash'
+  >;
+export declare type GraphQLRequestContextParsingDidStart<TContext> =
+  GraphQLRequestContextDidResolveSource<TContext>;
+export declare type GraphQLRequestContextValidationDidStart<TContext> =
+  GraphQLRequestContextParsingDidStart<TContext> &
+    WithRequired<GraphQLRequestContext<TContext>, 'document'>;
+export declare type GraphQLRequestContextDidResolveOperation<TContext> =
+  GraphQLRequestContextValidationDidStart<TContext> &
+    WithRequired<
+      GraphQLRequestContext<TContext>,
+      'operation' | 'operationName'
+    >;
+export declare type GraphQLRequestContextDidEncounterErrors<TContext> =
+  WithRequired<GraphQLRequestContext<TContext>, 'metrics' | 'errors'>;
+export declare type GraphQLRequestContextResponseForOperation<TContext> =
+  WithRequired<
+    GraphQLRequestContext<TContext>,
+    'metrics' | 'source' | 'document' | 'operation' | 'operationName'
+  >;
+export declare type GraphQLRequestContextExecutionDidStart<TContext> =
+  GraphQLRequestContextParsingDidStart<TContext> &
+    WithRequired<
+      GraphQLRequestContext<TContext>,
+      'document' | 'operation' | 'operationName'
+    >;
+export declare type GraphQLRequestContextWillSendResponse<TContext> =
+  GraphQLRequestContextDidResolveSource<TContext> &
+    WithRequired<GraphQLRequestContext<TContext>, 'metrics' | 'response'>;
 export interface CacheHint {
   maxAge?: number;
   scope?: CacheScope;
@@ -123,8 +164,8 @@ export interface CacheAnnotation extends CacheHint {
   inheritMaxAge?: true;
 }
 export declare enum CacheScope {
-  Public = "PUBLIC",
-  Private = "PRIVATE"
+  Public = 'PUBLIC',
+  Private = 'PRIVATE',
 }
 export interface CachePolicy extends CacheHint {
   replace(hint: CacheHint): void;
@@ -136,10 +177,8 @@ export interface ResolveInfoCacheControl {
   setCacheHint(hint: CacheHint): void;
   cacheHintFromType(t: GraphQLCompositeType): CacheHint | undefined;
 }
-declare module 'graphql/type/definition' {
-  interface GraphQLResolveInfo {
-    cacheControl: ResolveInfoCacheControl;
-  }
+export interface GraphQLResolveInfo extends GraphQLResolveInfoBase {
+  cacheControl: ResolveInfoCacheControl;
 }
 export {};
 //# sourceMappingURL=index.d.ts.map

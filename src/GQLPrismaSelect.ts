@@ -1,5 +1,5 @@
 import { Kind } from 'graphql/language/kinds';
-import { GraphQLResolveInfo } from 'graphql/type/definition';
+import type { GraphQLResolveInfo } from 'types';
 
 interface SelectInclude {
   select?: Include;
