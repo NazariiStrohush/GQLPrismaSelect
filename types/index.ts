@@ -1,1 +1,0 @@
-export { DEFAULT_PATHS } from '../src/constants';
