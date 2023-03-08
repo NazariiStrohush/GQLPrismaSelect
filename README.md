@@ -2,6 +2,7 @@
 
 ## Description
 This package allow you to parse your GraphQL request and convert it to Prisma include and select objects
+
 You can have one request and get any nested data you want
 
 ## Installation
@@ -10,25 +11,37 @@ You can have one request and get any nested data you want
   npm i @nazariistrohush/gql-prisma-select
 ```
 
-
 ## Quick example
 
-Get info from your request using @nestjs/graphql
+Get info from your request using `@nestjs/graphql`
 
-`@Info() info: GraphQLResolveInfo`
-
-OR
-
-Forth argument in your resolver
-https://www.apollographql.com/docs/apollo-server/data/resolvers/#handling-arguments
-
+Import `GQLPrismaSelect` and `GraphQLResolveInfo`
 ```ts
 import {
   GQLPrismaSelect,
   GraphQLResolveInfo,
 } from '@nazariistrohush/gql-prisma-select';
+```
 
-const { include, select } = new GQLPrismaSelect(info);
+#### Code first approach
+```ts
+@Query(() => Result)
+someResolver(@Info() info: GraphQLResolveInfo) {
+  // "info" is what you need
+  const { include, select } = new GQLPrismaSelect(info);
+}
+```
+
+#### Schema first approach
+
+Get forth argument in your resolver
+https://www.apollographql.com/docs/apollo-server/data/resolvers/#handling-arguments
+
+```ts
+someResolver(parent, args, context, info) {
+  // "info" is what you need
+  const { include, select } = new GQLPrismaSelect(info);
+}
 ```
 
 Then use it in Prisma.findUnique/findMany/findOne/updateOne/deleteOne etc...
