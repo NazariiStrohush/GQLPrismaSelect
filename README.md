@@ -1,6 +1,7 @@
 # GQLPrismaSelect
 
 ## Description
+
 This package allow you to parse your GraphQL request and convert it to Prisma include and select objects
 
 You can have one request and get any nested data you want
@@ -16,6 +17,7 @@ You can have one request and get any nested data you want
 Get info from your request using `@nestjs/graphql`
 
 Import `GQLPrismaSelect` and `GraphQLResolveInfo`
+
 ```ts
 import {
   GQLPrismaSelect,
@@ -24,6 +26,7 @@ import {
 ```
 
 #### Code first approach
+
 ```ts
 @Query(() => Result)
 someResolver(@Info() info: GraphQLResolveInfo) {
@@ -174,10 +177,25 @@ export class UserResolver {
 
 Or in case you are using schema first approach
 
-```gql
-type Query {
-  user(id: Int!): User!
-}
+```ts
+import {
+  GQLPrismaSelect,
+  GraphQLResolveInfo,
+} from '@nazariistrohush/gql-prisma-select';
+
+export default {
+  Query: {
+    user: async (parent, args, context, info: GraphQLResolveInfo) => {
+      const { include, select } = new GQLPrismaSelect(info);
+      // return userService.findOne({ where: { id }, include, select });
+      return prisma.user.findUnique({
+        where: { id: args.id },
+        include,
+        select,
+      });
+    },
+  },
+};
 ```
 
 #### Finally you can use your query like this
@@ -209,4 +227,3 @@ query {
 ```
 
 You can also describe posts query and get each user per post, or without it :)
-
