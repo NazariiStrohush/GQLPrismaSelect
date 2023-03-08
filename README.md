@@ -1,5 +1,16 @@
 # GQLPrismaSelect
 
+### Preconditions
+
+- You have to use Prisma as your ORM
+  - https://www.prisma.io/
+- Use NestJS or any other framework for backend
+  - https://nestjs.com/ - NestJS
+  - https://docs.nestjs.com/recipes/prisma#prisma - NestJS Prisma recipe
+- You have to use Apollo Server
+  - https://www.apollographql.com/docs/apollo-server/ - Apollo Server
+  - https://docs.nestjs.com/graphql/quick-start - NestJS Apollo Server recipe
+
 ## Description
 
 This package allow you to parse your GraphQL request and convert it to Prisma include and select objects
@@ -50,11 +61,6 @@ someResolver(parent, args, context, info) {
 Then use it in Prisma.findUnique/findMany/findOne/updateOne/deleteOne etc...
 
 ## Complete example
-
-### Preconditions
-
-- You have to use Prisma as your ORM
-- You have to use Apollo Server
 
 #### Describe your prisma model
 
