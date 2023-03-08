@@ -1,6 +1,6 @@
 {
   "name": "@nazariistrohush/gql-prisma-select",
-  "version": "0.0.14",
+  "version": "0.0.15",
   "description": "Package to get selection according to gql query fields",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
