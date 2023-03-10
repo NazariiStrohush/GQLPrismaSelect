@@ -31,7 +31,10 @@ export class GQLPrismaSelect<S = any, I = any> {
     this.originalInclude = res.include;
     this.originalSelect = res.select;
     // Get values in case we want to get a specific value by path or key
-    const customSelection = this.get(params.get, res.select || res.include);
+    const customSelection = GQLPrismaSelect.get(
+      params.get,
+      res.select || res.include
+    );
     const { include, select } = this.selectOrInclude(customSelection);
     this.include = include;
     this.select = select;
@@ -102,7 +105,7 @@ export class GQLPrismaSelect<S = any, I = any> {
     return res;
   }
 
-  private get(_path?: string | string[], _obj?: any) {
+  public static get(_path?: string | string[], _obj?: any) {
     if (!_path?.length) {
       return _obj;
     }
@@ -112,6 +115,6 @@ export class GQLPrismaSelect<S = any, I = any> {
     }
     const [key, ...rest] = path;
     const obj = _obj[key];
-    return this.get(rest, obj.select || obj.include);
+    return GQLPrismaSelect.get(rest, obj.select || obj.include);
   }
 }

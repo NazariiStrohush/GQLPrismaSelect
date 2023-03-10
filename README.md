@@ -23,6 +23,44 @@ You can have one request and get any nested data you want
   npm i @nazariistrohush/gql-prisma-select
 ```
 
+## Types
+
+### Arguments of `new GQLPrismaSelect(info, options)` constructor
+
+- `info` - `GraphQLResolveInfo` object
+- `options` - `object` with options
+  - `options.get` - `string | string[]` String split by `.` or an array to get custom path of selection (similar to lodash.get)
+  - `options.exclude` - `string[]` Fields to exclude from selection
+    - `__typename` excluded by default (because not exists in prisma model)
+
+### Results of `new GQLPrismaSelect(info, options)`
+
+- `include` - `object` with include object for Prisma
+- `select` - `object` with select object for Prisma
+- `originalInclude` - `object` with original include object (same as `include` in case `get` option is not used)
+- `originalSelect` - `object` with original select object (same as `select` in case `get` option is not used)
+
+### Static methods
+
+- `GQLPrismaSelect.get(selection, path)` - get some specific selections by path
+  - `selection` - `object` with selection ({ include, select } result of `new GQLPrismaSelect(info, options)` constructor)
+  - `path` - `string | string[]` String split by `.` or an array
+    - Used to get specific selection from select/include object
+
+E.g. get different selections from one GQLPrismaSelect constructor call
+
+```ts
+const includeSelect = new GQLPrismaSelect(info);
+const { include, select } = GQLPrismaSelect.get(
+  includeSelect,
+  'collection.User'
+);
+const { include: includePosts, select: selectPosts } = GQLPrismaSelect.get(
+  includeSelect,
+  'collection.Post'
+);
+```
+
 ## Quick example
 
 Get info from your request using `@nestjs/graphql`
